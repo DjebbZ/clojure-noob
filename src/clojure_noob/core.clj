@@ -1,3 +1,7 @@
+; ------------------------
+; Do Things
+; ------------------------
+
 (ns clojure-noob.core
   (:gen-class))
 
@@ -16,6 +20,12 @@
 ; Accessing a vector means using the vector as a function
 (failed-protagonist-names 2)
 
+
+
+; ------------------------
+; Strings
+; ------------------------
+
 ; Simple print statements
 (println "Something")
 (println "With \"quotes\" inside")
@@ -23,6 +33,12 @@
 ; String concatenation, no interpolation in Clojure
 (def name "Chewbacca")
 (println (str "Haaaaaaaaaa - " name))
+
+
+
+; ------------------------
+; Maps
+; ------------------------
 
 ; maps : key-value pairs. Here :a is a keyword
 {:a 1 ; number
@@ -45,6 +61,12 @@
 ; use a keyword as a function
 (:a {:a 1 :b 2})
 
+
+
+; ------------------------
+; Vectors
+; ------------------------
+
 ; vectors
 [3 2 1]
 
@@ -60,6 +82,12 @@
 ; nesting values as functions
 ((["a" {:a 1} 3] 1) :a)
 
+
+
+; ------------------------
+; Lists
+; ------------------------
+
 ; lists. Notice the preceding single quote.
 '(1 2 3 4)
 
@@ -67,6 +95,12 @@
 (get '(1 2 3 4) 0)
 
 (nth '(1 2 3 4) 2)
+
+
+
+; ------------------------
+; Sets
+; ------------------------
 
 ; sets : collections of unique values (mixing type is possible)
 #{"string" {:a 2} 2013 '(1 2 3)}
@@ -77,3 +111,4 @@
 (get #{1 2} 1)
 
 (get #{1 2} 3)
+
