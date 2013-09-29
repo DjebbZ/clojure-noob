@@ -152,3 +152,30 @@
 ; dec substracts 1
 (dec 3)
 (map dec [1 2 3 4])
+
+
+
+; ------------------------
+; Clarifying Terminology
+; ------------------------
+
+; expressions are called forms in List
+; forms are anything Clojure can evaluate
+2
+[1 2 3]
+(inc 1)
+(map inc [1 3 (inc 4)])
+
+; function call : form enclosed with parentheses where 1st elem is a function
+; "if" is not a function... A macro ? Don't know yet
+(if true 1 2)
+
+; a function call kicks off the evaluation process,
+; which evaluates each subform recursively
+(+ (inc 12) (/ (- 20 2) 100))
+
+; the above form evaluates like this :
+(+ 13 (/ (- 20 2) 100))
+(+ 13 (/ 18 100))
+(+ 13 0.18)
+; 13.18 ; final evaluation
