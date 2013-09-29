@@ -19,3 +19,7 @@
 ; Simple print statements
 (println "Something")
 (println "With \"quotes\" inside")
+
+; String concatenation, no interpolation in Clojure
+(def name "Chewbacca")
+(println (str "Haaaaaaaaaa - " name))
