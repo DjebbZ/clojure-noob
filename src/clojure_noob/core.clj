@@ -23,3 +23,24 @@
 ; String concatenation, no interpolation in Clojure
 (def name "Chewbacca")
 (println (str "Haaaaaaaaaa - " name))
+
+; maps : key-value pairs. Here :a is a keyword
+{:a 1 ; number
+ :b "boring example" ; string
+ :c []} ; vector
+
+; associating "string key" with the "plus" function
+{"string key" +}
+
+; look up in maps
+(get {:a 0} :a)
+
+(get {:a 0, :b 1} :b)
+
+(get {:a 0, :b {:c "nested maps"}} :b)
+
+; use a map as a function
+({:a 0, :b {:c "nested maps"}} :b)
+
+; use a keyword as a function
+(:a {:a 1 :b 2})
