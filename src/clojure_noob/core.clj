@@ -44,3 +44,26 @@
 
 ; use a keyword as a function
 (:a {:a 1 :b 2})
+
+; vectors
+[3 2 1]
+
+; get by index
+(get [3 2 1] 0)
+
+; mixing types in vector
+(get ["a" {:a 1} 3] 1)
+
+; using vector as function
+(["a" {:a 1} 3] 1)
+
+; nesting values as functions
+((["a" {:a 1} 3] 1) :a)
+
+; lists. Notice the preceding single quote.
+'(1 2 3 4)
+
+; Doesn't work for lists
+(get '(1 2 3 4) 0)
+
+(nth '(1 2 3 4) 2)
