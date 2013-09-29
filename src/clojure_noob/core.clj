@@ -112,3 +112,43 @@
 
 (get #{1 2} 3)
 
+
+
+; ------------------------
+; Calling Functions
+; ------------------------
+
+; <function-call> ::= (<function-expression> [<arg>*])
+(+ 1 2 3 4)
+(* 1 2 3 4)
+(first [1 2 3 4])
+
+; a <function-expression> is anything that evaluates to a function
+; + is truthy
+((or + -) 1 2 3)
+
+; return value of "and" is 1st falsy or last truthy value
+((and (= 1 1) +) 1 2 3)
+((and - +) 1 2 3)
+
+((first [+ 0]) 1 2 3)
+
+; not valid function calls
+
+; numbers are not functions
+;(1 2 3 4)
+
+; neither are strings
+;("test" 1 2 3)
+
+; inc increments a number by 1
+(inc 1)
+(inc 3.3)
+
+; map takes a function and applies it to each element of a collection
+; map returns a list, even though we passed a vector
+(map inc [0 2 3 4])
+
+; dec substracts 1
+(dec 3)
+(map dec [1 2 3 4])
