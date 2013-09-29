@@ -67,3 +67,13 @@
 (get '(1 2 3 4) 0)
 
 (nth '(1 2 3 4) 2)
+
+; sets : collections of unique values (mixing type is possible)
+#{"string" {:a 2} 2013 '(1 2 3)}
+
+; adding an already existing element does nothing, set remains unchanged
+(conj #{:a :b} :b)
+
+(get #{1 2} 1)
+
+(get #{1 2} 3)
