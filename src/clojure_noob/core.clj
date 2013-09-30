@@ -274,3 +274,45 @@
 
 (fav-things "Mitchell" "couscous" "women" "jokes")
 
+
+
+; ------------------------
+; Destructuring
+; ------------------------
+
+; Returns the first of a collection
+(defn my-first
+  [[first-param]]
+  first-param)
+
+(my-first ["oven" "bike" "wizard"])
+(my-first '("oven" "bike" "wizard"))
+;(my-first #{"oven" "bike" "wizard"}) ; doesn't work on sets...
+; (my-first {:1 "oven", :2 "bike", :3 "wizard"}) ; doesn't work on maps too...
+
+; possible to use several named params when destructuring
+(defn chooser
+  [[choice-1 choice-2 & other-choices]]
+  (println (str "Your first choice is " choice-1))
+  (println (str "Your 2nd choice is " choice-2))
+  (println (str "Your other choices are : "
+                (clojure.string/join ", " other-choices))))
+
+(chooser ["Marmelade", "Fruit Jam", "Salad", "Cocktail", "Hot sauce"])
+
+; destructing maps
+(defn treasure-location
+  [{lat :lat, lng :lng}]
+  (println (str "Treasure lat: " lat))
+  (println (str "Treasure lng: " lng)))
+
+(treasure-location {:lat 28.22 :lng 45.4545})
+
+; shorter syntax for destructuring maps, keeping track of original map passed
+(defn treasure-location-2
+  [{:keys [lat lng] :as treasure-map}]
+  (println (str "Treasure lat: " lat))
+  (println (str "Treasure lng: " lng))
+  (identity treasure-map))
+
+(treasure-location-2 {:lat 10 :lng 20})
