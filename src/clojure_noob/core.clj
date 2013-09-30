@@ -179,3 +179,98 @@
 (+ 13 (/ 18 100))
 (+ 13 0.18)
 13.18 ; final evaluation
+
+
+
+; ------------------------
+; Defining Functions
+; ------------------------
+
+;<function-definition> ::=
+  ;(defn <function-name> ["docstring"] \[<parameters>\] <function-body>)
+(defn too-enthusiastic
+  "Return a cheer that might be a bit too enthusiastic"
+  [name]
+  (str "OH MY GOD ! " name " YOU ARE MOST DEFINITELY LIKE THE BEST "
+       "BLHA BLHA BLAH AWESOME"))
+
+(too-enthusiastic "Zelda")
+
+
+
+; ------------------------
+; Docstrings
+; ------------------------
+
+; Docstrings can be accessed in the REPL with (doc fn-name)
+; Result for (doc too-enthusiastic) :
+;clojure-noob.core/too-enthusiastic
+;([name])
+;  Return a cheer that might be a bit too enthusiastic
+;nil
+
+
+
+; ------------------------
+; Parameters
+; ------------------------
+
+; Functions can have zero or more parameters
+(defn no-params
+  []
+  "I take no params")
+
+(defn one-param
+  [x]
+  (str "I take one param: " x ". It'd better be a string"))
+
+(defn two-params
+  [x y]
+  (str "2 params ! => " x ", " y))
+
+(no-params)
+(one-param "March")
+(two-params "Zomg" "FruityLoops")
+
+; Function overload by arity
+(defn x-chop
+  "Describe the kind of chop"
+  ([name chop-type]
+     (str "I " chop-type " chop " name " like that"))
+  ([name]
+     ; reuse the previous definiton so that "karate" is the default 2nd param
+     (x-chop name "karate")))
+
+(x-chop "Kanye West")
+(x-chop "Kanye West" "kung fu")
+
+; unrelated overload behavior based on arity
+(defn weird-activity
+  ([]
+     "Something strange is happening here")
+  ([num]
+     (inc num)))
+
+(weird-activity)
+(weird-activity 41)
+
+; rest-params : args splats put in a name, with "&"
+(defn disturb
+  [disturbance]
+  (str "Get off my lawn, " disturbance))
+
+(defn disturbz
+  [& disturbances]
+  (map disturb disturbances))
+
+(disturb "Boulay")
+(disturbz "Boulay" "Tête de con" "Bitch")
+
+; rest-params can be mixed woth normal params, but has to come last
+(defn fav-things
+  [name & things]
+  (str "Hi, " name ", my fav things are : "
+       (clojure.string/join ", " things)))
+
+(fav-things "Mitchell" "couscous" "women" "jokes")
+
