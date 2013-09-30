@@ -316,3 +316,28 @@
   (identity treasure-map))
 
 (treasure-location-2 {:lat 10 :lng 20})
+
+
+
+; ------------------------
+; Function body
+; ------------------------
+
+; Functions returns the last form evaluated
+(defn dumb-fn
+  []
+  (+ 1 304)
+  30
+  "joe")
+
+(dumb-fn)
+
+(defn number-comment
+  [x]
+  (if (> x 6)
+    "Big number !" ; then case
+    "Too small.")) ; else case
+
+(number-comment 5)
+(number-comment 7)
+
