@@ -341,3 +341,29 @@
 (number-comment 5)
 (number-comment 7)
 
+
+
+; ------------------------
+; Anonymous Functions
+; ------------------------
+
+;(fn [param-list] function-body)
+(map (fn [name]
+       (str "Hi, " name))
+     ["Luke", "Vador"])
+
+((fn [x] (* x 3)) 8)
+
+; It's even possible to associate an anonymous function with a name
+; I suppose this is what Clojure does under the hood with defn...
+(def mult-by-3 (fn [x] (* x 3)))
+(mult-by-3 12)
+
+; shorter syntax
+#(* % 8)
+
+; % is the first argument. %1, %2,.. %n when several arguments are passed.
+(#(str %1 " and " %2) "Bread" "butter")
+
+; %& for rest-params
+;(#(identity %&) 1 "dude" :yippie) ; not working...
