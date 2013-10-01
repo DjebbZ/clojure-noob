@@ -404,4 +404,30 @@
    :size (:size part)})
 
 (defn symmetrize-body-parts
-  "Expects a seq of maps which have a :name and a :size")
+  "Expects a seq of maps which have a :name and a :size"
+  [asym-body-parts]
+  (loop [remaining-asym-parts asym-body-parts
+         final-body-parts []]
+    (if (empty? remaining-asym-parts)
+      final-body-parts
+      (let [[part & remaining] remaining-asym-parts
+            final-body-parts (conj final-body-parts part)]
+        (if (has-matching-part? part)
+          (recur remaining (conj final-body-parts (matching-part part)))
+          (recur remaining final-body-parts))))))
+
+(symmetrize-body-parts asym-hobbit-body-parts)
+
+
+
+
+; ------------------------
+; if
+; ------------------------
+
+; The then-form and optional-else-form are *never both evaluated*
+;(if boolean-form
+;  then-form
+;  optional-else-form)
+
+; if is a special form
