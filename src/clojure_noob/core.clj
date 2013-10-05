@@ -459,3 +459,20 @@
 
 ;; But it adds elements to *beginning* of a list
 (conj '(1) 2 3)
+
+
+
+; -------------------------------
+; Shorter Symmetrizer with Reduce
+; -------------------------------
+
+(defn better-symmetrize-body-parts
+  "Expects a seq of maps which have a :name and :size"
+  [asym-body-parts]
+  (reduce (fn [final-body-parts part]
+            (let [final-body-parts (conj final-body-parts part)]
+              (if (has-matching-part? part)
+                (conj final-body-parts (matching-part part))
+                final-body-parts)))
+          []
+          asym-body-parts))
