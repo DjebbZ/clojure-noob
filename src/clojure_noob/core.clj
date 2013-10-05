@@ -396,6 +396,8 @@
 
 (defn has-matching-part?
   [part]
+  ;; re-find returns true or false based on whether the
+  ;; the part's name starts with the string "left-"
   (re-find #"^left-" (:name part)))
 
 (defn matching-part
@@ -410,6 +412,9 @@
          final-body-parts []]
     (if (empty? remaining-asym-parts)
       final-body-parts
+      ;; Associate "part" with the first element of "remaining-asym-parts"
+      ;; Associate "remaining" with the rest of the elements in "remaining-asym-parts"
+      ;; Associate "final-body-parts" with the result of (conj final-body-parts
       (let [[part & remaining] remaining-asym-parts
             final-body-parts (conj final-body-parts part)]
         (if (has-matching-part? part)
@@ -430,4 +435,27 @@
 ;  then-form
 ;  optional-else-form)
 
-; if is a special form
+; if is a special form, only the matching form is evaluated (unlike function calls)
+
+
+
+; ------------------------
+; Regular Expressions
+; ------------------------
+
+; #"regular-expression"
+
+
+
+; ------------------------
+; conj
+; ------------------------
+
+; adds elements to a sequence
+(conj [] 1)
+
+;; Conj adds elements to the *end* of a vector
+(conj [1] 2 3)
+
+;; But it adds elements to *beginning* of a list
+(conj '(1) 2 3)
